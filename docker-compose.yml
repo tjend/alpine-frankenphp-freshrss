@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    image: localhost/alpine-frankenphp-freshrss:latest
+    volumes:
+      - freshrss-data:/app/data
+  cron:
+    # use the freshrss image, but override the entrypoint and healthcheck
+    entrypoint: /usr/bin/supercronic /etc/crontab
+    healthcheck:
+      test: supercronic -test /etc/crontab
+    image: localhost/alpine-frankenphp-freshrss:latest
+    volumes:
+      - freshrss-data:/app/data
+  proxy:
+    image: docker.io/caddy:latest
+    ports:
+      - 8443:8443
+    volumes:
+      - ./Caddyfile.proxy:/etc/caddy/Caddyfile
+volumes:
+  freshrss-data:

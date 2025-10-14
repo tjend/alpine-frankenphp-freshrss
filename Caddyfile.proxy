@@ -1,0 +1,14 @@
+https://localhost:8443 {
+	reverse_proxy app:8080
+	tls internal
+}
+
+# use a url path prefix, see https://freshrss.github.io/FreshRSS/en/admins/Caddy.html
+#https://localhost:8443 {
+#	handle_path /url-path-prefix/* {
+#		reverse_proxy http://app:8080 {
+#			header_up X-Forwarded-Prefix "/url-path-prefix"
+#		}
+#	}
+#	tls internal
+#}
