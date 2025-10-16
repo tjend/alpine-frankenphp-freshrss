@@ -31,7 +31,7 @@ RUN <<EOF
   # freshrss
   wget -O - https://github.com/FreshRSS/FreshRSS/archive/refs/heads/latest.tar.gz | tar zx -C /app --strip-component 1
   /app/cli/prepare.php
-  /app/cli/do-install.php --allow-anonymous --allow-anonymous-refresh --auth-type="none" --default-user="admin"
+  /app/cli/do-install.php --allow-anonymous --allow-anonymous-refresh --auth-type="none" --default-user="admin" --disable-update
   /app/cli/create-user.php --language="en" --user="admin"
   chown -R "${USER}:${USER}" /app/data
 
