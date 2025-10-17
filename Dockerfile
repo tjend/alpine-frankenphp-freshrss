@@ -35,6 +35,12 @@ RUN <<EOF
   /app/cli/create-user.php --language="en" --user="admin"
   chown -R "${USER}:${USER}" /app/data
 
+  # freshrss extensions
+  mkdir /tmp/ext
+  wget -O - https://github.com/langfeld/FreshRSS-extensions/archive/refs/heads/master.tar.gz | tar zx -C /tmp/ext --strip-component 1
+  mv "/tmp/ext/xExtension-"* "/app/extensions"
+  rm -rf /tmp/ext
+
   # add cron
   apk --no-cache add supercronic
   echo "27 * * * * /app/app/actualize_script.php # hourly" > /etc/crontab
