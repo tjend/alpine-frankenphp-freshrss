@@ -1,6 +1,6 @@
 # based on https://frankenphp.dev/docs/docker/#running-with-no-capabilities
 
-ARG PHP_VERSION="8.4.13"
+ARG PHP_VERSION="8.4.16"
 FROM docker.io/dunglas/frankenphp:php${PHP_VERSION}-alpine
 
 # run frankenphp as this user
@@ -27,6 +27,9 @@ RUN <<EOF
 
   # remove default website
   rm -rf /app/public
+
+  # add php extensions
+  install-php-extensions intl zip
 
   # freshrss
   wget -O - https://github.com/FreshRSS/FreshRSS/archive/refs/heads/latest.tar.gz | tar zx -C /app --strip-component 1
