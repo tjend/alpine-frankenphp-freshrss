@@ -41,6 +41,8 @@ RUN <<EOF
   # freshrss extensions
   mkdir /tmp/ext
   wget -O - https://github.com/langfeld/FreshRSS-extensions/archive/refs/heads/master.tar.gz | tar zx -C /tmp/ext --strip-component 1
+  mkdir /tmp/ext/xExtension-TitleDecode
+  wget -O - https://github.com/tjend/freshrss-title-decode-extension/archive/refs/heads/master.tar.gz | tar zx -C /tmp/ext/xExtension-TitleDecode --strip-component 1
   mv "/tmp/ext/xExtension-"* "/app/extensions"
   rm -rf /tmp/ext
 
