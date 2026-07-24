@@ -1,0 +1,32 @@
+name: Update FrankenPHP's PHP Version + Github Actions
+# run like:
+#   updatecli pipeline diff --config .updatecli.yaml
+#   updatecli pipeline apply --config .updatecli.yaml
+
+autodiscovery:
+  crawlers:
+    github/action:
+      digest: true
+      rootdir: ./.github/workflows/
+
+sources:
+  PhpVersion:
+    name: Get FrankenPHP's latest PHP version from docker image
+    kind: dockerimage
+    spec:
+      image: docker.io/dunglas/frankenphp
+      tagfilter: ^php\d*(.\d*){2}-alpine$
+    transformers:
+      - trimprefix: php
+      - trimsuffix: -alpine
+
+targets:
+  PhpVersion:
+    name: Update ARG PHP_VERSION in Dockerfile
+    kind: dockerfile
+    sourceid: PhpVersion
+    spec:
+      file: Dockerfile
+      instruction:
+        keyword: ARG
+        matcher: PHP_VERSION

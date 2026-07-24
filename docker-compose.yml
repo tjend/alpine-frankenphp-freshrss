@@ -36,5 +36,16 @@ services:
       - 8443:8443
     volumes:
       - ./Caddyfile.proxy:/etc/caddy/Caddyfile
+  updatecli:
+    environment:
+      UPDATECLI_DISABLE_VERSION_CHECK: disable
+      # uses .env in local dev, provided by github actions
+      UPDATECLI_GITHUB_TOKEN: ${UPDATECLI_GITHUB_TOKEN}
+    image: docker.io/updatecli/updatecli:latest-slim
+    profiles: [cli]
+    volumes:
+      - .:/app
+      - ./.tmp:/tmp/updatecli
+    working_dir: /app
 volumes:
   freshrss-data:
