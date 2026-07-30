@@ -52,3 +52,9 @@ RUN <<EOF
 EOF
 
 USER ${USER}
+
+# custom install check script
+COPY check-install.php /app/check-install.php
+
+# check install
+RUN php /app/check-install.php
