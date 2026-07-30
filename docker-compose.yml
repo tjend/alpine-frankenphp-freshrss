@@ -12,6 +12,12 @@ services:
     image: localhost/alpine-frankenphp-freshrss:latest
     volumes:
       - freshrss-data:/app/data
+  lint-dockerfile:
+    image: docker.io/hadolint/hadolint:latest-alpine
+    profiles: [cli]
+    volumes:
+      - .:/app
+    working_dir: /app
   proxy:
     image: docker.io/caddy:latest
     ports:
