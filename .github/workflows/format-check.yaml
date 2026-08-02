@@ -1,8 +1,9 @@
 name: format check dockerfile + github actions
-
 on:
   push:
-
+    paths:
+      - ".github/workflows/**"
+      - Dockerfile
 jobs:
   format-check:
     runs-on: ubuntu-latest

@@ -1,8 +1,9 @@
 name: lint dockerfile + github actions
-
 on:
   push:
-
+    paths:
+      - ".github/workflows/**"
+      - Dockerfile
 jobs:
   lint:
     runs-on: ubuntu-latest
