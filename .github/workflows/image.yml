@@ -16,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
       - name: Set REPOSITORY_NAME environment variable
-        run: echo "REPOSITORY_NAME=$(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)" >> $GITHUB_ENV
+        run: echo "REPOSITORY_NAME=$(echo "${GITHUB_REPOSITORY}" | cut -d '/' -f 2)" >> "${GITHUB_ENV}"
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
