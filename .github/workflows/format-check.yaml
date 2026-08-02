@@ -1,0 +1,17 @@
+name: format check dockerfile + github actions
+
+on:
+  push:
+
+jobs:
+  format-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v5
+      - name: copy .env
+        run: cp .env.example .env
+      - name: lint-dockerfile
+        run: make format_check_dockerfile
+      - name: lint-github-actions
+        run: make format_check_github_actions
