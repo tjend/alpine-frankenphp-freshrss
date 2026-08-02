@@ -1,6 +1,6 @@
 # based on https://frankenphp.dev/docs/docker/#running-with-no-capabilities
 
-ARG PHP_VERSION="8.4.16"
+ARG PHP_VERSION=8.5.9
 FROM docker.io/dunglas/frankenphp:php${PHP_VERSION}-alpine
 
 # run frankenphp as this user
