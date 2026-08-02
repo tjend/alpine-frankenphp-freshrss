@@ -24,6 +24,12 @@ services:
     volumes:
       - .:/app
     working_dir: /app
+  lint-github-actions:
+    image: docker.io/rhysd/actionlint:latest
+    profiles: [cli]
+    volumes:
+      - ./.github:/app/.github
+    working_dir: /app
   proxy:
     image: docker.io/caddy:latest
     ports:

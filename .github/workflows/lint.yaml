@@ -1,15 +1,17 @@
-name: lint-dockerfile
+name: lint dockerfile + github actions
 
 on:
   push:
 
 jobs:
-  lint-dockerfile:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: git checkout
         uses: actions/checkout@v5
       - name: copy .env
         run: cp .env.example .env
-      - name: lint-dockerfile
+      - name: lint dockerfile
         run: make lint_dockerfile
+      - name: lint github actions
+        run: make lint_github_actions
