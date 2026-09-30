@@ -16,6 +16,10 @@ sources:
     spec:
       image: docker.io/dunglas/frankenphp
       tagfilter: ^php\d*(.\d*){2}-alpine$
+      versionfilter:
+        kind: regex/semver
+        pattern: '*'
+        regex: ^php(\d*(.\d*){2})-alpine$
     transformers:
       - trimprefix: php
       - trimsuffix: -alpine
