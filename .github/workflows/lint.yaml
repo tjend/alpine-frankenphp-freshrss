@@ -16,3 +16,5 @@ jobs:
         run: make lint_dockerfile
       - name: lint github actions
         run: make lint_github_actions
+      - name: lint updatecli
+        run: make lint_updatecli
